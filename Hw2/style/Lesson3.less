@@ -1,0 +1,80 @@
+@import "Lesson3variable.less";
+*{
+	margin: 2;
+	padding: 0;
+}
+html,body{
+	background: url(@url) 100% / cover no-repeat;
+	height:100%;
+	overflow: hidden;
+}
+.main-first__div,.main__third-div{
+	.height(20%); 
+}
+
+.main__second-div{
+	.height(60%);
+}
+.first-div,.line{
+	.flex(row, space-around);
+}
+.third-div, .third-div__when{
+	.flex(row,space-between);
+}
+.first-div__colors,.line__text{
+	margin-bottom: @margin-bottom;
+	height:  @height-first-div-colors;
+	width: @width-first-div-colors;
+}
+.line{
+	.height(50%);
+}
+.one-color{
+	background-color: spin(@first-div-colors-one,@distance);
+	.hov(@hint-one-color);
+	}
+
+
+
+.two-color{
+	background-color: lighten(@first-div-colors-two,@distance/2);
+	.hov(@hint-two-color);
+}
+.three-color{
+	background-color: darken(@first-div-colors-three,@distance/3);
+	.hov(@hint-three-color);
+}
+.one-text{
+	.content(@one-text,@img-one-text);
+	.mixin(#b2a1e5);
+	.hov(@hint-one-text);
+}
+.two-text{
+	.content(@two-text,@img-two-text);
+	color:green;
+	.hov(@hint-two-text);
+}
+.three-text{
+	.content(@three-text,@img-three-text);
+	color: rgb(61, 25, 16861, 25, 168);
+	.hov(@hint-three-text);
+}
+.four-text{
+	.content(@four-text,@img-four-text);
+	text-align:right;
+	.hov(@hint-four-text);
+}
+.five-text{
+	.content(@four-text,@img-five-text);
+	font-style:italic;
+	.hov(@hint-five-text);
+}
+.six-text{
+	.content(@six-text,@img-six-text);
+	.hov(@hint-six-text);
+}
+
+.third-div__when{
+	.mixin-loop(5);
+}
+

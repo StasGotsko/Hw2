@@ -1,0 +1,93 @@
+@url:'../image/background.jpg';
+@img-one-text:'../image/FlagItaly.png';
+@img-two-text:'../image/FlagChina.png';
+@img-three-text:'../image/FlagIndia.png';
+@img-four-text:'../image/FlagEgypt.png';
+@img-five-text:'../image/FlagMexico.png';
+@img-six-text:'../image/FlagPeru.png';
+@hint:"";
+/*Color*/
+@first-div-colors-one: rgb(110, 27, 255);
+@first-div-colors-two: purple;
+@first-div-colors-three: yellow;
+@distance:90;
+
+@width-first-div-colors:200px;
+@height-first-div-colors: 120px;
+@margin-bottom: 30px;
+
+@one-text: "Колизей — амфитеатр, памятник архитектуры Древнего Рима, сохранившихся до нашего времени.";
+@two-text: "Великая Китайская стена — разделительная стена длиной почти 9000 км (полная длина 21,2 тыс. км), построенная в древнем Китае.";
+@three-text: "Тадж-Маха́л — мавзолей-мечеть, находящийся в Агре, Индия, на берегу реки Джамна.";
+@four-text: "Комплекс пирамид в Гизе — комплекс древних памятников на плато Гиза в пригороде Каира, современной столицы Египта. ";
+@five-text:"Чиче́н-Ица́ (исп. Chichén Itzá, аст. Chichen Itzā, юк. Chi’ch'èen Ìitsha) — политический и культурный центр майя на севере полуострова Юкатан в Мексике, священный город народа Ица. ";
+@six-text:"Ма́чу-Пи́кчу — город древней Америки, находящийся на территории современного Перу, в 6 километрах от посёлка Агуас-Кальентес. ";
+
+@hint-one-color:'One Div';
+@hint-two-color:'Two Div';
+@hint-three-color:'Three Div';
+@hint-one-text:'Колизей';
+@hint-two-text:'Великая Китайская стена';
+@hint-three-text:'Тадж-Маха́л';
+@hint-four-text:'Комплекс пирамид в Гизе';
+@hint-five-text:'Чиче́н-Ица́';
+@hint-six-text:'Ма́чу-Пи́кчу';
+
+.flex(@flex-direction, @justify-content){
+ 	display: flex;
+ 	flex-direction: @flex-direction;
+ 	justify-content: @justify-content;
+ 	align-items: flex-start;
+} 
+.height(@height){
+	height: @height;
+}
+.text(){
+	font-size:15px;
+	font-family: Comic Sans MS;
+	text-align:justify;
+}
+.content(@text,@img) {
+	&:before{
+   	content: @text;
+  	}
+  	.text;
+  	&:after{
+  	content: url(@img);
+  	}
+}
+.hov(@hint){
+   &:hover:after{
+      content: @hint; 
+      position: absolute; 
+      z-index: 1; 
+      background: rgba(255,255,230,0.9); 
+      font-family: Arial, sans-serif; 
+      font-size: 11px; 
+      padding: 5px 10px; 
+      border: 1px solid #333; 
+      }
+}
+
+.mixin(@a) when(lightness(@a)>=50%)
+{
+  color:black;
+}
+
+.mixin(@a) when(lightness(@a)<50%)
+{
+  color:yellow;
+}
+
+
+
+.mixin-loop (@i) when (@i > 0) {
+  .when:nth-child(@{i})::after {
+    content: "@i == @{i}";
+    background: hsl(@i * 30, 50%, 30%);
+  }
+  .mixin-loop(@i - 1);
+}
+
+
+
